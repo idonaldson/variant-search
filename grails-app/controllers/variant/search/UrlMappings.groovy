@@ -18,6 +18,13 @@ class UrlMappings {
         '/gene'(resources: 'gene') {
             collection {
                 '/search'(controller: 'gene', action: 'search')
+
+            }
+        }
+        '/gene'(resources: 'gene') {
+            collection {
+                '/suggestion'(controller: 'gene', action: 'suggestion')
+
             }
         }
     }
