@@ -13,5 +13,12 @@ class UrlMappings {
         "/"(controller: 'application', action:'index')
         "500"(view: '/error')
         "404"(view: '/notFound')
+
+
+        '/gene'(resources: 'gene') {
+            collection {
+                '/search'(controller: 'gene', action: 'search')
+            }
+        }
     }
 }
