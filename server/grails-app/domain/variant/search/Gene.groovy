@@ -13,8 +13,8 @@ class Gene {
     String reportedClassification
     String inferredClassification
     String source
-    String   lastEvaluated
-    String   lastUpdated
+    String lastEvaluated
+    String lastUpdated
     String url
     String submitterComment
     String assembly
