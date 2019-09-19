@@ -11,28 +11,26 @@ class GeneController extends RestfulController {
         super(Gene)
     }
 
-    def search(String query, Integer max) {
-        if (query) {
-            //first method of finding objects is by using a where clause, the double equal tilde is a match operator similar to find
+    def results(String geneName, Integer max) {
+        println(geneName)
+        if (geneName) {
             def geneQuery = Gene.where {
-                geneName ==~ "%${query}%"
+                geneName == "${geneName}"
             }
-
             respond geneQuery.list(max: Math.min( max ?: 10, 100))
         } else {
             respond([])
         }
     }
 
-    def suggestion(String term) {
-        if (term) {
-            // second method to finding objects is using the built in findAll/findOne etc methods
-            def foundItems = Gene.findAllByGeneNameLike(term + "%", params)
-            List suggestions = new ArrayList()
-            foundItems.each {
-                suggestions.add(it.geneName)
+    def suggestion(String value, Integer max) {
+        if (value) {
+            def c = Gene.createCriteria()
+            def results = c.list (max: Math.min( max ?: 10, 100), offset: 10) {
+                like("geneName", "${value}%")
+                order("geneName", "asc")
             }
-            respond suggestions
+            respond results
         } else {
             respond([])
         }

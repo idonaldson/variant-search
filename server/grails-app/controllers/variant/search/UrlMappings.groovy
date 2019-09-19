@@ -17,7 +17,7 @@ class UrlMappings {
 
         '/gene'(resources: 'gene') {
             collection {
-                '/search'(controller: 'gene', action: 'search')
+                '/results'(controller: 'gene', action: 'results')
 
             }
         }
