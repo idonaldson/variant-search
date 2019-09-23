@@ -7,18 +7,16 @@ class GeneSpec extends Specification implements DomainUnitTest<Gene> {
 
     void "testing validation"() {
         when: 'Saving invalid data'
-        Gene gene = new Gene(id: null, name: '')
+        Gene gene = new Gene(geneName: null)
         gene.save()
 
         then: 'errors were found, nothing saved'
         gene.hasErrors()
-        gene.errors.getFieldError('id')
-        gene.errors.getFieldError('name')
+        gene.errors.getFieldError('geneName')
         Gene.count() == 0
 
-        when: 'Saving a valid gene with no variant'
-        gene.id = 1
-        gene.name = 'CDKL5'
+        when: 'Saving a valid gene'
+        gene.geneName = 'CDKL5'
         gene.save()
 
         then: 'Gene saved'
