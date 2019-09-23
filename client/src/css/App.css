@@ -139,3 +139,9 @@ a:hover {
     background-color: white!important;
   }
 }
+table{
+    table-layout: fixed;
+}
+td{
+    word-wrap:break-word
+}

@@ -5,7 +5,7 @@ import Autosuggest from 'react-autosuggest';
 import axios from 'axios';
 import { debounce } from 'throttle-debounce'
 import './css/style.css'
-import {Link, Redirect} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 
 class App extends Component {
@@ -15,8 +15,7 @@ class App extends Component {
 
     this.state = {
         value: '',
-        suggestions: [],
-        toResults: false
+        suggestions: []
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -57,15 +56,11 @@ class App extends Component {
   }
   handleSubmit(event) {
       alert('Gene name submitted: ' + this.state.value);
-      this.setState({toResults:true});
+      this.setState({viewResults:true});
       event.preventDefault();
   }
 
   render() {
-      if ( this.state.toResults === true ) {
-          return <Redirect to='/results' />;
-
-      }
       const { value, suggestions } = this.state
 
       const inputProps = {

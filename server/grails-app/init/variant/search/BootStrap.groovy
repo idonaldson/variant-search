@@ -19,31 +19,32 @@ class BootStrap {
             for (row in data) {
                 if (row["Gene"].toString().length() > 0){
                     count++
-                    def gene = new Gene(
-                            geneName: row["Gene"],
-                            nucleotideChange: row["Nucleotide Change"],
-                            proteinChange: row["Protein Change"],
-                            otherMappings: row["Other Mappings"],
-                            alias: row["Alias"],
-                            transcripts: row["Transcripts"],
-                            region: row["Region"],
-                            reportedClassification: row["Reported Classification"],
-                            inferredClassification: row["Inferred Classification"],
-                            source: row["Source"],
-                            lastEvaluated: row["Last Evaluated"],
-                            lastUpdated: row["Last Updated"],
-                            url: row["URL"],
-                            submitterComment: row["Submitter Comment"],
-//                            assembly: row["Assembly"],
-//                            chr: row["Chr"],
-//                            genomicStart: row["Genomic Start"],
-//                            genomicStop: row["Genomic Stop"]
-//                            ref: row["Ref"],
-//                            alt: row["Alt"],
-//                            accession: row["Accession"],
-//                            reportedRef: row["Reported Ref"],
-//                            reportedAlt: row["Reported Alt"]
-                    ).save(failOnError: true);
+
+                    def gene = new Gene()
+                    gene.geneName = row["Gene"]
+                    gene.nucleotideChange = row["Nucleotide Change"] ?: ""
+                    gene.proteinChange = row["Protein Change"] ?: ""
+                    gene.otherMappings = row["Other Mappings"] ?: ""
+                    gene.alias = row["Alias"] ?: ""
+                    gene.transcripts = row["Transcripts"] ?: ""
+                    gene.region = row["Region"] ?: ""
+                    gene.reportedClassification = row["Reported Classification"] ?: ""
+                    gene.inferredClassification = row["Inferred Classification"] ?: ""
+                    gene.source = row["Source"] ?: ""
+                    gene.lastEvaluated = row["Last Evaluated"] ?: ""
+                    gene.lastUpdated = row["Last Updated"] ?: ""
+                    gene.url = row["URL"] ?: ""
+                    gene.submitterComment = row["Submitter Comment"] ?: ""
+//                    gene.assembly = row["Assembly"] ?: ""
+//                    gene.chr = row["Chr"] ?: ""
+//                    gene.genomicStart = row["Genomic Start"] ?: ""
+//                    gene.genomicStop = row["Genomic Stop"] ?: ""
+//                    gene.ref = row["Ref"] ?: ""
+//                    gene.alt = row["Alt"] ?: ""
+//                    gene.accession = row["Accession"] ?: ""
+//                    gene.reportedRef = row["Reported Ref"] ?: ""
+//                    gene.reportedAlt = row["Reported Alt"] ?: ""
+                    gene.save(failOnError: true);
                 }
             }
                 println "Total records loaded: ${count}"

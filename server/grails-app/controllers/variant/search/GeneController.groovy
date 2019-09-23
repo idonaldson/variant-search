@@ -17,7 +17,8 @@ class GeneController extends RestfulController {
             def geneQuery = Gene.where {
                 geneName == "${geneName}"
             }
-            respond geneQuery.list(max: Math.min( max ?: 10, 100))
+            def resultList = geneQuery.list(max: Math.min( max ?: 10, 100))
+            respond resultList
         } else {
             respond([])
         }
@@ -26,11 +27,12 @@ class GeneController extends RestfulController {
     def suggestion(String value, Integer max) {
         if (value) {
             def c = Gene.createCriteria()
-            def results = c.list (max: Math.min( max ?: 10, 100), offset: 10) {
+            def results = c.list() {
                 like("geneName", "${value}%")
                 order("geneName", "asc")
             }
-            respond results
+            respond results.unique{it.geneName}
+
         } else {
             respond([])
         }
