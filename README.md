@@ -27,10 +27,12 @@ The application server was built using `Grails 3.3.5` and the client application
 
 
 ## Available Scripts
-
-In the root of the project directory, you can run:
-
+To run the project from a *Nix based system, run the following from the root directory:
 ### `./gradlew bootRun --parallel`
+
+On a Windows based system, run the following command from the root directory:
+### `gradlew.bat bootRun --parallel`
+
 
 This will run both the server and client applications. The server will load on port 8080, while the client will be running
 on port 3000. 
