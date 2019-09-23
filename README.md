@@ -1,4 +1,4 @@
-#Variant Search Demo App
+# Variant Search Demo App
 
 This application is a demo to demonstrate searching a list of genes and their variants. This app provides an auto suggest feature and displays the results in a tabular mannor.
 
